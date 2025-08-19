@@ -8,11 +8,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Service
-public class CarsServis {
+public class CarServis {
 
     private final List<Car> cars = new ArrayList<>();
 
-    public CarsServis() {
+    public CarServis() {
         cars.add(new Car("Toyota", "Camry", 2020));
         cars.add(new Car("Honda", "Accord", 2019));
         cars.add(new Car("BMW", "X5", 2021));
@@ -26,14 +26,14 @@ public class CarsServis {
         cars.add(new Car("Hyundai", "Tucson", 2022));
     }
 
-    public List<Car> getCars(int count) {
+    public List<Car> getCar(int count) {
         if (count <= 0 || count > cars.size()) {
             return cars;
         }
         return cars.subList(0, count);
     }
 
-    public  List<Car> getCars() {
+    public  List<Car> getCar() {
         return cars;
     }
 
