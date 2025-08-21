@@ -6,7 +6,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import web.model.Car;
 import web.servis.CarServis;
+
+import java.util.List;
 
 @Controller
 public class CarController {
@@ -19,17 +22,12 @@ public class CarController {
     }
 
     @GetMapping(value = "/cars")
-    public String GetCar(@RequestParam (defaultValue = "6") String count, ModelMap model) {
+    public String GetCar(@RequestParam (defaultValue = "6") Integer count, ModelMap model) {
 
-        int count2 = Integer.parseInt(count);
-
-
-        if (count2 < 6) {
-            model.addAttribute("cars", carServis.getCar(count2));
-        }else {
-            model.addAttribute("cars", carServis.getCar());
+        if (count < 0) {
+            count = 6;
         }
-
+      model.addAttribute("cars", carServis.getCar(count));
 
         return "cars/cars";
     }
